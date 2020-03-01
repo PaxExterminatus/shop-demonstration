@@ -28,7 +28,7 @@
         </nav>
 
         <keep-alive>
-            <router-view class="content"/>
+            <router-view class="container"/>
         </keep-alive>
     </div>
 </template>

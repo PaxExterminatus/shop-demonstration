@@ -1,21 +1,24 @@
 <template>
-    <div class="page">
+    <div class="page-product">
         <div class="product">
 
-            <div class="product-gallery">
-                <img
-                    class="gallery-img"
-                    v-for="img of model.images"
-                    :src="img"
-                    :alt="model.name"
-                >
+            <div class="product-images">
+                <div class="product-gallery">
+                    <img
+                        class="gallery-img"
+                        v-for="img of model.images"
+                        :src="img"
+                        :alt="model.name"
+                    >
+                </div>
+
+                <div class="product-cover">
+                    <img class="cover-img" :src="model.images[0]" :alt="model.name">
+                </div>
             </div>
 
-            <div class="product-cover">
-                <img class="cover-img" :src="model.images[0]" :alt="model.name">
-            </div>
             <div class="product-info">
-                <div class="info-title">
+                <div class="title t1">
                     {{model.name}}
                 </div>
                 <div class="info-prices">
@@ -67,11 +70,14 @@
             </div>
         </div>
 
-        <div class="see-more" v-if="more">
-            <div class="more-item" v-for="item of more">
-                <img class="more-img" :src="item.image" :alt="item.name">
-                <span class="more-name">{{item.name}}</span>
-                <span class="more-price">{{item.price}} ₽</span>
+        <div class="see-more">
+            <div class="title t2">Смотрите также</div>
+            <div class="see-more-gallery" v-if="more">
+                <div class="more-item" v-for="item of more">
+                    <img class="more-img" :src="item.image" :alt="item.name">
+                    <span class="more-name">{{item.name}}</span>
+                    <span class="more-price">{{item.price}} ₽</span>
+                </div>
             </div>
         </div>
     </div>
@@ -134,11 +140,27 @@
 </script>
 
 <style lang="scss">
+    .product-images {
+        display: flex;
+        gap: 40px;
+    }
+    .title {
+        font-weight: bold;
+        line-height: 120%;
+        &.t2 {
+            font-size: 40px;
+        }
+        &.t2 {
+            font-size: 32px;
+        }
+    }
+
     .product {
         font-family: Aeroport, serif;
         color: #000;
         display: flex;
         gap: 40px;
+
         .product-label {
             font-size: 18px;
         }
@@ -155,7 +177,7 @@
 
         .product-cover {
             width: 460px;
-            height: 700px;
+            max-height: 700px;
             .cover-img {
                 max-width: 100%;
                 max-height: 100%;
@@ -164,11 +186,6 @@
         }
 
         .product-info {
-            .info-title {
-                font-weight: bold;
-                font-size: 40px;
-                line-height: 120%;
-            }
             .info-prices {
                 display: flex;
                 gap: 16px;
@@ -244,27 +261,55 @@
             }
         }
 
+        @media screen and (max-width: 1024px) {
+            flex-direction: column;
+            .product-images {
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .product-images {
+                flex-direction: row-reverse;
+            }
+        }
+
+        @media screen and (max-width: 375px) {
+            .product-images {
+                flex-direction: column-reverse;
+            }
+            .product-gallery {
+                flex-direction: row;
+            }
+            .product-cover {
+                width: 334px;
+                height: 509px;
+            }
+        }
+
     }
 
     .see-more {
-        display: flex;
-        gap: 41px;
-        .more-item {
-            width: 359px;
+        .see-more-gallery {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .more-img {
-            height: 524px;
-            object-fit: cover;
-            max-width: 100%;
-        }
-        .more-name {
-            font-size: 20px;
-        }
-        .more-price {
-            font-size: 18px;
+            gap: 41px;
+            .more-item {
+                width: 359px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .more-img {
+                height: 524px;
+                object-fit: cover;
+                max-width: 100%;
+            }
+            .more-name {
+                font-size: 20px;
+            }
+            .more-price {
+                font-size: 18px;
+            }
         }
     }
 </style>
