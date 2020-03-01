@@ -66,6 +66,14 @@
                 <div v-html="model.text"></div>
             </div>
         </div>
+
+        <div class="see-more" v-if="more">
+            <div class="more-item" v-for="item of more">
+                <img class="more-img" :src="item.image" :alt="item.name">
+                <span class="more-name">{{item.name}}</span>
+                <span class="more-price">{{item.price}} ₽</span>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -93,6 +101,10 @@
                     color: null,
                     count: 1,
                 },
+                /**
+                 * @type {{image: string, name: string, price: number}[]}
+                 */
+                more: null,
             }
         },
 
@@ -111,6 +123,11 @@
             axios.get('/api/clothing')
                 .then( (resp) => {
                     this.model = resp.data
+                });
+
+            axios.get('/api/more')
+                .then( (resp) => {
+                    this.more = resp.data
                 });
         }
     }
@@ -225,6 +242,29 @@
             .counter-btn {
                 cursor: pointer;
             }
+        }
+
+    }
+
+    .see-more {
+        display: flex;
+        gap: 41px;
+        .more-item {
+            width: 359px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .more-img {
+            height: 524px;
+            object-fit: cover;
+            max-width: 100%;
+        }
+        .more-name {
+            font-size: 20px;
+        }
+        .more-price {
+            font-size: 18px;
         }
     }
 </style>
