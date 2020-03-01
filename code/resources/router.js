@@ -11,9 +11,19 @@ const routes = [
         component: Home
     },
     {
-        path: '/product',
-        name: 'product',
-        component: () => import(/* webpackChunkName: "app/chunk.page.product" */ './components/pages/ProductPage.vue')
+        path: '/clothing',
+        name: 'clothing',
+        component: () => import(/* webpackChunkName: "app/chunk.page.clothing" */ './components/pages/ClothingPage.vue')
+    },
+    {
+        path: '/accessories',
+        name: 'accessories',
+        component: () => import(/* webpackChunkName: "app/chunk.page.accessories" */ './components/pages/AccessoriesPage.vue')
+    },
+    {
+        path: '/collections',
+        name: 'collections',
+        component: () => import(/* webpackChunkName: "app/chunk.page.collections" */ './components/pages/CollectionsPage.vue')
     },
 ];
 
