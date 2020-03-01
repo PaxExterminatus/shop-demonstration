@@ -40,6 +40,30 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="product-adder">
+
+                    <div class="product-counter">
+                        <span class="counter-btn" @click="countInp--">
+                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="5" width="12" height="2" fill="#777777"/>
+                            </svg>
+                        </span>
+                        {{input.count}}
+                        <span class="counter-btn" @click="countInp++">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="5" width="12" height="2" fill="#777777"/>
+                                <rect x="5" y="12" width="12" height="2" transform="rotate(-90 5 12)" fill="#777777"/>
+                            </svg>
+                        </span>
+                    </div>
+
+                    <div class="adder-btn">
+                        В корзину
+                    </div>
+                </div>
+
+                <div v-html="model.text"></div>
             </div>
         </div>
     </div>
@@ -67,7 +91,19 @@
                 input: {
                     size: null,
                     color: null,
+                    count: 1,
                 },
+            }
+        },
+
+        computed: {
+            countInp: {
+                get () {
+                    return this.input.count;
+                },
+                set (val) {
+                    this.input.count = !val || val < 1 ? 1 : val;
+                }
             }
         },
 
@@ -144,7 +180,6 @@
             $size: 52px;
             cursor: pointer;
             min-width: $size;
-            width: max-content;
             height: $size;
             border: 1px solid #000000;
             box-sizing: border-box;
@@ -162,6 +197,33 @@
         .product-sizes {
             .product-btn {
                 text-transform: uppercase;
+            }
+        }
+
+        .product-adder {
+            display: flex;
+            gap: 16px;
+            & > * {
+                display: flex;
+                padding: 20px;
+                border-radius: 8px;
+            }
+            .adder-btn {
+                cursor: pointer;
+                justify-content: center;
+                align-items: center;
+                background: #000;
+                color: #fff;
+                width: 202px;
+            }
+        }
+
+        .product-counter {
+            justify-content: space-between;
+            width: 161px;
+            background: #F4F4F4;
+            .counter-btn {
+                cursor: pointer;
             }
         }
     }
