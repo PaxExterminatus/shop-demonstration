@@ -8,6 +8,25 @@
 @import './components/product-info';
 @import './components/product-also';
 
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body, .application {
+    height: 100%;
+}
+
+.application {
+    display: flex;
+    flex-direction: column;
+    .site-header {
+        min-height: 121px;
+    }
+    .page {
+        flex: 1;
+    }
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -16,7 +35,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 121px;
     margin-bottom: 41px;
     padding: 0 45px;
 }

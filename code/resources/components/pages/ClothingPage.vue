@@ -1,11 +1,12 @@
 <template>
-    <div class="page-product">
+    <div class="product-content">
         <div class="product" v-if="model">
 
             <product-images :product="model"/>
             <product-info :product="model">
                 <div class="site-way">Главная / Одежда/ Худи и свитшоты / Худи/ Свитшот Nike</div>
             </product-info>
+
         </div>
 
         <div class="product-also" v-if="more">
