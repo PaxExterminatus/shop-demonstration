@@ -17,6 +17,7 @@ Route::middleware('api')->get('/clothing', function (Request $request) {
                 '/images/02.jpg',
                 '/images/03.jpg',
             ],
+            'stock' => true,
         ]);
 });
 

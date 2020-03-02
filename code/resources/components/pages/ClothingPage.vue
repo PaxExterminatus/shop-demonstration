@@ -1,6 +1,6 @@
 <template>
     <div class="page-product">
-        <div class="product">
+        <div class="product" v-if="model">
 
             <div class="product-images">
                 <div class="product-gallery">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="product-adder">
+                <div class="product-adder" v-if="model.stock">
 
                     <div class="product-counter">
                         <span class="counter-btn" @click="countInp--">
@@ -66,13 +66,17 @@
                     </div>
                 </div>
 
+                <div v-else class="stock-false">
+                    Товар закончился
+                </div>
+
                 <div v-html="model.text"></div>
             </div>
         </div>
 
-        <div class="see-more">
+        <div class="see-more" v-if="more">
             <div class="title t2">Смотрите также</div>
-            <div class="see-more-gallery" v-if="more">
+            <div class="see-more-gallery">
                 <div class="more-item" v-for="item of more">
                     <img class="more-img" :src="item.image" :alt="item.name">
                     <span class="more-name">{{item.name}}</span>
@@ -90,18 +94,7 @@
 
         data(){
             return {
-                model: {
-                    name: '',
-                    price: {
-                        current: 0,
-                        old: 0,
-                    },
-                    sizes: [],
-                    colors: [],
-                    text: '',
-                    images: [],
-                },
-
+                model: null,
                 input: {
                     size: null,
                     color: null,
@@ -140,6 +133,11 @@
 </script>
 
 <style lang="scss">
+    .stock-false {
+        font-size: 20px;
+        line-height: 130%;
+        color: #999999;
+    }
     .product-images {
         display: flex;
         gap: 40px;
@@ -159,8 +157,6 @@
         font-family: Aeroport, serif;
         color: #000;
         display: flex;
-        gap: 40px;
-
         .product-label {
             font-size: 18px;
         }
