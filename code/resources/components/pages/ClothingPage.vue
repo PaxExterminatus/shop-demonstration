@@ -18,6 +18,7 @@
             </div>
 
             <div class="product-info">
+                <div class="site-way">Главная / Одежда/ Худи и свитшоты / Худи/ Свитшот Nike</div>
                 <div class="title t1">
                     {{model.name}}
                 </div>
@@ -94,6 +95,9 @@
 
         data(){
             return {
+                /**
+                 *
+                 */
                 model: null,
                 input: {
                     size: null,
