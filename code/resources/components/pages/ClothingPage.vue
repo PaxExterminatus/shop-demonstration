@@ -8,8 +8,8 @@
             </product-info>
         </div>
 
-        <div class="see-more" v-if="more">
-            <div class="title t2">Смотрите также</div>
+        <div class="product-also" v-if="more">
+            <div class="site-title t2">Смотрите также</div>
             <div class="see-more-gallery">
                 <div class="more-item" v-for="item of more">
                     <img class="more-img" :src="item.image" :alt="item.name">
@@ -103,30 +103,6 @@
 
         @media screen and (max-width: 1024px) {
             flex-direction: column;
-        }
-    }
-
-    .see-more {
-        .see-more-gallery {
-            display: flex;
-            gap: 41px;
-            .more-item {
-                width: 359px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .more-img {
-                height: 524px;
-                object-fit: cover;
-                max-width: 100%;
-            }
-            .more-name {
-                font-size: 20px;
-            }
-            .more-price {
-                font-size: 18px;
-            }
         }
     }
 </style>

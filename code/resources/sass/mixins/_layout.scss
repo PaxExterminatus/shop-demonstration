@@ -1,0 +1,5 @@
+@mixin layout-separator($padding, $margin) {
+    padding-bottom: $padding;
+    margin-bottom: $margin;
+    border-bottom: 1px solid #EAEAEA;
+}
