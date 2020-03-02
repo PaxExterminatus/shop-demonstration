@@ -1,1 +1,52 @@
 @import '~bootstrap';
+// https://fonts.google.com/specimen/Open+Sans
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap&subset=cyrillic');
+
+@import 'mixins';
+
+@import './components/product-images';
+@import './components/product-info';
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 121px;
+    margin-bottom: 41px;
+    padding: 0 45px;
+}
+
+.nav-top {
+    .link {
+        font-size: $size-font-nav;
+        color: $color-font-main;
+        line-height: 27px;
+        text-decoration: none;
+        margin-right: 35px;
+        :last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.site-title {
+    font-weight: bold;
+    line-height: 120%;
+    &.t1 {
+        font-size: 40px;
+    }
+    &.t2 {
+        font-size: 32px;
+    }
+}
+
+.site-way {
+    font-size: 12px;
+    line-height: 130%;
+    margin-bottom: 22px;
+    color: $color-font-alt;
+}

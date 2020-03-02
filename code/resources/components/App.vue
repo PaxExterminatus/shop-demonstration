@@ -6,13 +6,13 @@
             </router-link>
 
             <nav class="nav-top">
-                <router-link to="/clothing">
+                <router-link class="link" to="/clothing">
                     Одежда <icon :w="13" :h="8" name="arrow"/>
                 </router-link>
-                <router-link to="/accessories">
+                <router-link class="link" to="/accessories">
                     Аксессуары <icon :w="13" :h="8" name="arrow"/>
                 </router-link>
-                <router-link to="/collections">
+                <router-link class="link" to="/collections">
                     Коллекции <icon :w="13" :h="8" name="arrow"/>
                 </router-link>
             </nav>
@@ -42,18 +42,7 @@
 </script>
 
 <style lang="scss">
-    .site-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 121px;
-        border: solid 1px;
-        margin-bottom: 41px;
-        padding: 0 45px;
-    }
-    .nav-top {
 
-    }
     .nav-actions {
 
     }
