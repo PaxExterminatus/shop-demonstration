@@ -1,0 +1,25 @@
+@import '../mixins';
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 121px;
+    margin-bottom: 41px;
+    padding: 0 45px;
+
+    @media screen and (max-width: 375px) {
+        min-height: 60px;
+        padding: 0 23px;
+        margin-bottom: 16px;
+        .find-btn {
+            display: none;
+        }
+        .nav-top {
+            display: none;
+        }
+        .site-logo {
+            @include size(48px, 16px);
+        }
+    }
+}

@@ -5,6 +5,7 @@
 @import 'mixins';
 
 @import './template/footer-main';
+@import './template/site-header';
 
 @import './components/product-images';
 @import './components/product-info';
@@ -25,9 +26,6 @@ html, body, .application {
 .application {
     display: flex;
     flex-direction: column;
-    .site-header {
-        min-height: 121px;
-    }
     .page {
         flex: 1;
     }
@@ -35,14 +33,6 @@ html, body, .application {
 
 body {
     font-family: 'Open Sans', sans-serif;
-}
-
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 41px;
-    padding: 0 45px;
 }
 
 .nav-top {

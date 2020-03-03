@@ -3,10 +3,19 @@
         <fullscreen-layout v-model="fullscreenLayoutState" :component="fullscreenLayoutComponent"/>
 
         <header class="site-header">
-            <icon class="action mobile-menu-btn" :w="24" :h="19" name="mobile-menu" @click.native="showMobileMenu"/>
+            <icon class="action mobile-menu-btn"
+                  :w="24" :h="19" name="mobile-menu"
+                  v-if="!fullscreenLayoutState"
+                  @click.native="showMobileMenu"
+            />
+            <icon class="action mobile-menu-btn"
+                  :w="24" :h="19" name="close"
+                  v-if="fullscreenLayoutState"
+                  @click.native="closeMobileMenu"
+            />
 
             <router-link to="/">
-                <icon :w="78" :h="28" name="logo"/>
+                <icon class="site-logo" :w="78" :h="28" name="logo"/>
             </router-link>
 
             <nav class="nav-top">
@@ -22,7 +31,7 @@
             </nav>
 
             <div class="nav-actions">
-                <icon :w="26" :h="26" name="find"/>
+                <icon class="action find-btn" :w="26" :h="26" name="find"/>
                 <icon class="action basket-btn" :w="31" :h="22" name="basket" @click.native="showBasket"/>
             </div>
         </header>
@@ -95,6 +104,10 @@
             showMobileMenu() {
                 this.fullscreenLayoutComponent = 'MobileMenu';
                 this.fullscreenLayoutState = true;
+            },
+            closeMobileMenu() {
+                this.fullscreenLayoutState = false ;
+                this.fullscreenLayoutComponent = '';
             },
             showBasket() {
                 this.fullscreenLayoutComponent = 'Basket';

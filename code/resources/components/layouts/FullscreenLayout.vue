@@ -71,6 +71,10 @@
                 justify-content: center;
             }
         }
+
+        @media screen and (max-width: 375px) {
+            margin-top: 60px;
+        }
     }
 
 </style>
