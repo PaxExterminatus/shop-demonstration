@@ -35,7 +35,7 @@
                 <icon class="counter-btn" @click.native="countInput++" :w="12" :h="12" name="plus"/>
             </div>
 
-            <div class="adder-btn">
+            <div class="site-btn type-black">
                 В корзину
             </div>
         </div>

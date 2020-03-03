@@ -3,3 +3,9 @@
     margin-bottom: $margin;
     border-bottom: 1px solid #EAEAEA;
 }
+
+@mixin flex-center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

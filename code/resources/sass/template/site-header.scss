@@ -8,10 +8,17 @@
     margin-bottom: 41px;
     padding: 0 45px;
 
+    .mobile-menu-btn {
+        display: none;
+    }
+
     @media screen and (max-width: 375px) {
         min-height: 60px;
         padding: 0 23px;
         margin-bottom: 16px;
+        .mobile-menu-btn {
+            display: block;
+        }
         .find-btn {
             display: none;
         }

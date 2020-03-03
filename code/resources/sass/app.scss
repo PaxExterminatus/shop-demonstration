@@ -35,6 +35,16 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.site-btn {
+    @include flex-center;
+    cursor: pointer;
+    border-radius: 8px;
+    &.type-black {
+        color: #fff;
+        background-color: #000;
+    }
+}
+
 .nav-top {
     .link {
         font-size: $size-font-nav;

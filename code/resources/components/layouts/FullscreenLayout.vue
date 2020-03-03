@@ -1,10 +1,6 @@
 <template>
 <div class="popup-full-screen" v-if="value && component" @mousedown.self="close">
-    <div class="popup-container">
-        <div class="popup-component">
-            <component :is="component"/>
-        </div>
-    </div>
+    <component :is="component"/>
 </div>
 </template>
 
@@ -45,7 +41,6 @@
 
 <style lang="scss" scoped>
     .popup-full-screen {
-        padding: 5px;
         width: 100vw;
         height: 100%;
         position: fixed;
@@ -55,22 +50,6 @@
         align-items: center;
         flex-direction: column;
         overflow-y: auto;
-
-        .popup-actions {
-            position: sticky;
-            top: 0;
-        }
-
-        .popup-container {
-            margin: auto auto;
-        }
-
-        .popup-component {
-            background-color: #ffffff;
-            .grid-cards {
-                justify-content: center;
-            }
-        }
 
         @media screen and (max-width: 375px) {
             margin-top: 60px;
