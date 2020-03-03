@@ -8,22 +8,28 @@
 
         <div class="basket-total">
             <span>Предварительный итог:</span>
-            <span>{{summary}}</span>
+            <span>{{basket.sum}} ₽</span>
         </div>
         <div class="site-btn type-black">Оформить заказ</div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "Basket",
+export default {
+    name: 'Basket',
 
-        data() {
-            return {
-                summary: 0,
-            }
+    data() {
+        return {
+            sum: 0,
+        }
+    },
+
+    computed: {
+        basket() {
+            return this.$store.state.basket;
         }
     }
+}
 </script>
 
 <style lang="scss" scoped>

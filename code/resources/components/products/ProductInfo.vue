@@ -35,7 +35,7 @@
                 <icon class="counter-btn" @click.native="countInput++" :w="12" :h="12" name="plus"/>
             </div>
 
-            <div class="site-btn type-black">
+            <div class="site-btn type-black" @click="addProduct">
                 В корзину
             </div>
         </div>
@@ -50,7 +50,7 @@
 
 <script>
 export default {
-    name: "ProductInfo",
+    name: 'ProductInfo',
 
     props: {
         /**
@@ -80,6 +80,9 @@ export default {
     },
 
     computed: {
+        basket() {
+            return this.$store.state.basket;
+        },
         countInput: {
             get () {
                 return this.input.count;
@@ -89,5 +92,11 @@ export default {
             }
         }
     },
+
+    methods: {
+        addProduct() {
+            this.basket.addProduct(this.product);
+        }
+    }
 }
 </script>
