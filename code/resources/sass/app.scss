@@ -18,6 +18,10 @@ html, body, .application {
     height: 100%;
 }
 
+.action {
+    cursor: pointer;
+}
+
 .application {
     display: flex;
     flex-direction: column;
