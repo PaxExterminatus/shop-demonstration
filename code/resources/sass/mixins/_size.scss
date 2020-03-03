@@ -1,1 +1,6 @@
 $size-font-nav: 20px;
+
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+}
