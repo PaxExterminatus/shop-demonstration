@@ -38,11 +38,6 @@
         data(){
             return {
                 model: null,
-                input: {
-                    size: null,
-                    color: null,
-                    count: 1,
-                },
                 /**
                  * @type {{image: string, name: string, price: number}[]}
                  */

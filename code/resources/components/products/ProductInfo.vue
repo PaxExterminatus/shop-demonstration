@@ -13,7 +13,7 @@
         <div class="product-sizes">
             <div class="product-label">Размер:</div>
             <div class="product-btn-panel">
-                <div class="product-btn" :class="{selected: input.size === value}" v-for="value of product.sizes" @click="input.size = value">
+                <div class="product-btn" :class="{selected: size === value}" v-for="value of product.sizes" @click="size = value">
                     {{value}}
                 </div>
             </div>
@@ -22,18 +22,14 @@
         <div class="product-colors">
             <div class="product-label">Цвет:</div>
             <div class="product-btn-panel">
-                <div class="product-btn" :class="{selected: input.color === value}" v-for="value of product.colors" @click="input.color = value">
+                <div class="product-btn" :class="{selected: color === value}" v-for="value of product.colors" @click="color = value">
                     {{value}}
                 </div>
             </div>
         </div>
 
         <div class="product-adder" v-if="product.stock">
-            <div class="product-counter">
-                <icon class="counter-btn" @click.native="countInput--" :w="12" :h="12" name="minus"/>
-                {{input.count}}
-                <icon class="counter-btn" @click.native="countInput++" :w="12" :h="12" name="plus"/>
-            </div>
+            <input-count v-model="count"/>
 
             <div class="site-btn type-black" @click="addProduct">
                 В корзину
@@ -49,54 +45,49 @@
 </template>
 
 <script>
-export default {
-    name: 'ProductInfo',
+    import InputCount from '../inputs/InputCount'
+    export default {
+        name: 'ProductInfo',
 
-    props: {
-        /**
-         * @type {{
-         * name: string,
-         * text: string,
-         * price: {current: number, old: number},
-         * sizes: string[],
-         * colors: string[],
-         * stock: boolean,
-         * }}
-         */
-        product: {
-            type: Object,
-            required: true,
-        }
-    },
+        components: {
+            InputCount
+        },
 
-    data() {
-        return {
-            input: {
+        props: {
+            /**
+             * @type {{
+             * name: string,
+             * text: string,
+             * price: {current: number, old: number},
+             * sizes: string[],
+             * colors: string[],
+             * stock: boolean,
+             * }}
+             */
+            product: {
+                type: Object,
+                required: true,
+            }
+        },
+
+        data() {
+            return {
                 size: null,
                 color: null,
                 count: 1,
-            },
-        }
-    },
-
-    computed: {
-        basket() {
-            return this.$store.state.basket;
+            }
         },
-        countInput: {
-            get () {
-                return this.input.count;
+
+        computed: {
+            basket() {
+                return this.$store.state.basket;
             },
-            set (val) {
-                this.input.count = !val || val < 1 ? 1 : val;
+        },
+
+        methods: {
+            addProduct() {
+                this.basket.addProduct(this.product);
             }
         }
-    },
-
-    methods: {
-        addProduct() {
-            this.basket.addProduct(this.product);
-        }
     }
-}
 </script>
