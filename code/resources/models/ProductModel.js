@@ -1,5 +1,6 @@
 class ProductModel {
-    constructor({name, cover, price}) {
+    constructor({id, name, cover, price}) {
+        this.id = id;
         this.name = name;
         this.cover = cover;
         this.price = price;

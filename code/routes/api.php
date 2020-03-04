@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 
 Route::middleware('api')->get('/clothing', function (Request $request) {
         return response()->json([
+            'id' => 1,
             'name' => 'Свитшот Nike',
             'price' => [
                 'current' => 2900,

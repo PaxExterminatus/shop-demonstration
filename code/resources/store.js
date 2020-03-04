@@ -10,7 +10,8 @@ const store = new Vuex.Store({
     },
     mutations: {
         basketProductAdd (state, product) {
-            state.basket.products.push(product);
+            const other = state.basket.products.filter( (prod) =>  prod.id !== product.id);
+            state.basket.products = [...other, product];
         }
     }
 });
