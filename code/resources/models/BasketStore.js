@@ -1,6 +1,6 @@
 import store from '../store'
 
-class Basket {
+class BasketStore {
     constructor() {
         this.products = [];
     }
@@ -10,7 +10,7 @@ class Basket {
     }
 
     get sum() {
-        return this.products.reduce((sum, product) => sum + product.price.current, 0);
+        return this.products.reduce((sum, product) => (sum + product.price) * product.count, 0);
     }
 
     addProduct(product, mutation = 'basketProductAdd') {
@@ -19,7 +19,7 @@ class Basket {
 }
 
 export {
-    Basket
+    BasketStore
 }
 
-export default Basket
+export default BasketStore

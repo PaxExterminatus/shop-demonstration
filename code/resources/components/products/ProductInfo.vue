@@ -13,7 +13,7 @@
         <div class="product-sizes">
             <div class="product-label">Размер:</div>
             <div class="product-btn-panel">
-                <div class="product-btn" :class="{selected: size === value}" v-for="value of product.sizes" @click="size = value">
+                <div class="product-btn" :class="{selected: model.size === value}" v-for="value of product.sizes" @click="model.size = value">
                     {{value}}
                 </div>
             </div>
@@ -22,14 +22,14 @@
         <div class="product-colors">
             <div class="product-label">Цвет:</div>
             <div class="product-btn-panel">
-                <div class="product-btn" :class="{selected: color === value}" v-for="value of product.colors" @click="color = value">
+                <div class="product-btn" :class="{selected: model.color === value}" v-for="value of product.colors" @click="model.color = value">
                     {{value}}
                 </div>
             </div>
         </div>
 
         <div class="product-adder" v-if="product.stock">
-            <input-count v-model="count"/>
+            <input-count v-model="model.count"/>
 
             <div class="site-btn type-black" @click="addProduct">
                 В корзину
@@ -46,6 +46,8 @@
 
 <script>
     import InputCount from '../inputs/InputCount'
+    import ProductModel from '../../models/ProductModel'
+
     export default {
         name: 'ProductInfo',
 
@@ -72,9 +74,11 @@
 
         data() {
             return {
-                size: null,
-                color: null,
-                count: 1,
+                model: new ProductModel({
+                    name: this.product.name,
+                    cover: this.product.images[0],
+                    price: this.product.price.current,
+                }),
             }
         },
 
@@ -86,7 +90,7 @@
 
         methods: {
             addProduct() {
-                this.basket.addProduct(this.product);
+                this.basket.addProduct(this.model);
             }
         }
     }

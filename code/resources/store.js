@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Basket from './models/Basket';
+import BasketStore from './models/BasketStore';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        basket: new Basket(),
+        basket: new BasketStore(),
     },
     mutations: {
         basketProductAdd (state, product) {

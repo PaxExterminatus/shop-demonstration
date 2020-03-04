@@ -49,5 +49,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .product-counter {
+        justify-content: space-between;
+        align-items: center;
+        width: 161px;
+        background: #F4F4F4;
+        display: flex;
+        padding: 20px;
+        border-radius: 8px;
+        .counter-btn {
+            cursor: pointer;
+        }
+    }
 
 </style>
